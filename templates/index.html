@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Employee Attrition Prediction</title>
+    <title>Employee Attrition Prediction Form</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Employee Attrition Prediction</h1>
+        <h1>Employee Attrition Prediction Form</h1>
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='employee.jpg') }}" alt="Company Logo">
+        </div>
+        <br><br>
         <form action="/predict" method="post">
             <!-- Numerical Inputs -->
             <div class="form-group">

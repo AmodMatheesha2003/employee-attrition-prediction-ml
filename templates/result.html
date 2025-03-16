@@ -7,7 +7,11 @@
 <body>
     <div class="container">
         <h1>Prediction Result</h1>
-        <p>The employee is likely to: <strong>{{ prediction }}</strong></p>
+        <p>The employee is likely to:
+            <strong class="{% if prediction == 'Stayed' %}stay-color{% else %}leave-color{% endif %}">
+                {{ prediction }}
+            </strong>
+        </p>
         <a href="/">Make Another Prediction</a>
     </div>
 </body>

@@ -1,17 +1,43 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: #c0d7fc;
     margin: 0;
-    padding: 20px;
-    background-color: #f4f4f4;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column; /* Align everything vertically */
+    box-sizing: border-box;
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
     background: white;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 900px; /* Set max-width to ensure it's not too large on wide screens */
+    overflow-y: auto; /* Allow vertical scrolling if the form is too tall */
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center; /* Centers the image horizontally */
+    margin-bottom: 20px; /* Adds space below the image */
+}
+
+img {
+    max-width: 100%; /* Ensures the image is responsive */
+    height: auto; /* Keeps the image's aspect ratio intact */
 }
 
 .form-group {
@@ -20,26 +46,47 @@ body {
 
 label {
     display: block;
+    font-weight: bold;
     margin-bottom: 5px;
 }
 
 input, select {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: 0.3s;
+    box-sizing: border-box; /* Prevent padding from affecting the width */
+}
+
+input:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 button {
-    background-color: #4CAF50;
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
     color: white;
-    padding: 10px 15px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
+    font-size: 18px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #0056b3;
+}
+
+
+.stay-color {
+    color: green;
+}
+
+.leave-color {
+    color: red;
 }
