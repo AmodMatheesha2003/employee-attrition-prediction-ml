@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Attrition Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function calculateDerivedValues() {
+            let yearsAtCompany = parseFloat(document.getElementById("Years_at_Company").value) || 0;
+            let companyTenure = parseFloat(document.getElementById("Company_Tenure").value) || 0;
+            let monthlyIncome = parseFloat(document.getElementById("Monthly_Income").value) || 0;
+            let numPromotions = parseFloat(document.getElementById("Number_of_Promotions").value) || 0;
+
+            let experience = yearsAtCompany + companyTenure;
+            let highIncome = monthlyIncome > 0.5 ? 1 : 0;
+            let promotionFrequency = numPromotions / (yearsAtCompany + 1);
+
+            document.getElementById("Experience").value = experience.toFixed(2);
+            document.getElementById("High_Income").value = highIncome;
+            document.getElementById("Promotion_Frequency").value = promotionFrequency.toFixed(4);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Employee Attrition Prediction</h1>
+        <form action="/predict" method="post" onsubmit="calculateDerivedValues()">
+            <div class="form-group">
+                <label>Age (years):</label>
+                <input type="number" step="0.01" name="Age" required>
+            </div>
+
+            <div class="form-group">
+                <label>Distance from Home (miles):</label>
+                <input type="number" step="0.1" name="Distance from Home" required>
+            </div>
+
+            <div class="form-group">
+                <label>Number of Promotions:</label>
+                <input type="number" step="0.01" name="Number of Promotions" required>
+            </div>
+
+            <div class="form-group">
+                <label>Number of Dependents:</label>
+                <input type="number" name="Number of Dependents" required>
+            </div>
+
+            <div class="form-group">
+                <label>Experience (years):</label>
+                <input type="number" step="0.01" name="Experience" required>
+            </div>
+
+            <div class="form-group">
+                <label>Promotion Frequency:</label>
+                <input type="number" step="0.0001" name="Promotion_Frequency" required>
+            </div>
+
+            <div class="form-group">
+                <label>Gender:</label>
+                <select name="Gender" required>
+                    <option value="0">Female</option>
+                    <option value="1">Male</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Job Role:</label>
+                <select name="Job Role" required>
+                    <option value="0">Education</option>
+                    <option value="1">Finance</option>
+                    <option value="2">Healthcare</option>
+                    <option value="3">Media</option>
+                    <option value="4">Technology</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Work-Life Balance:</label>
+                <select name="Work-Life Balance" required>
+                    <option value="0">Excellent</option>
+                    <option value="1">Fair</option>
+                    <option value="2">Good</option>
+                    <option value="3">Poor</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Job Satisfaction:</label>
+                <select name="Job Satisfaction" required>
+                    <option value="0">High</option>
+                    <option value="1">Low</option>
+                    <option value="2">Medium</option>
+                    <option value="3">Very High</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Performance Rating:</label>
+                <select name="Performance Rating" required>
+                    <option value="0">Average</option>
+                    <option value="1">Below Average</option>
+                    <option value="2">High</option>
+                    <option value="3">Low</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Overtime:</label>
+                <select name="Overtime" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Education Level:</label>
+                <select name="Education Level" required>
+                    <option value="0">Associate Degree</option>
+                    <option value="1">Bachelor’s Degree</option>
+                    <option value="2">High School</option>
+                    <option value="3">Master’s Degree</option>
+                    <option value="4">PhD</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Marital Status:</label>
+                <select name="Marital Status" required>
+                    <option value="0">Divorced</option>
+                    <option value="1">Married</option>
+                    <option value="2">Single</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Job Level:</label>
+                <select name="Job Level" required>
+                    <option value="0">Entry</option>
+                    <option value="1">Mid</option>
+                    <option value="2">Senior</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Company Size:</label>
+                <select name="Company Size" required>
+                    <option value="0">Large</option>
+                    <option value="1">Medium</option>
+                    <option value="2">Small</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Remote Work:</label>
+                <select name="Remote Work" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Leadership Opportunities:</label>
+                <select name="Leadership Opportunities" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Innovation Opportunities:</label>
+                <select name="Innovation Opportunities" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Company Reputation:</label>
+                <select name="Company Reputation" required>
+                    <option value="0">Excellent</option>
+                    <option value="1">Fair</option>
+                    <option value="2">Good</option>
+                    <option value="3">Poor</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Employee Recognition:</label>
+                <select name="Employee Recognition" required>
+                    <option value="0">High</option>
+                    <option value="1">Low</option>
+                    <option value="2">Medium</option>
+                    <option value="3">Very High</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>High Income:</label>
+                <select name="High Income" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <button type="submit">Predict Attrition</button>
+        </form>
+    </div>
+</body>
+</html>
